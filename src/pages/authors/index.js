@@ -10,7 +10,7 @@ const AuthorPages = () => {
     const fetchInfo = async () => {
       try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/author/`);
-        const sortedData = response.data.sort((a, b) => a.BookID - b.BookID);
+        const sortedData = response.data.sort((a, b) => a.AuthorID - b.AuthorID);
         setData(sortedData);
         console.log(sortedData);
       } catch (error) {
@@ -25,16 +25,86 @@ const AuthorPages = () => {
   const handleGoBack = () => {
     router.push('/dashboard');
   };
+  
+  const handleEdit = async (authorsId) => {
+    try {
+      const edited = data.find((edited) => edited.AuthorID === authorsId);
 
-  const handleEdit = (authorsId) => {
-    // Handle edit logic here
-    console.log(`Editing book with ID: ${authorsId}`);
+      if (!edited) {
+        console.error(`Author with ID ${authorsId} not found.`);
+        return;
+      }
+
+      const updatedFirstName = prompt('Enter the updated First Name:', edited.FirstName);
+      const updatedLastName = prompt('Enter the updated Last Name:', edited.LastName);
+      const updatedYearBorn = prompt('Enter the updated Year Born:', edited.YearBorn);
+      const updatedYearDied = prompt('Enter the updated Year Died:', edited.YearDied === null ? "" : (edited.YearDied || ""));
+
+      if (
+        !updatedFirstName &&
+        !updatedLastName &&
+        !updatedYearBorn &&
+        !updatedYearDied
+      ) {
+        console.log('No fields were updated.');
+        return;
+      }
+
+      const updatedAuthor = {
+        FirstName: updatedFirstName || edited.FirstName,
+        LastName: updatedLastName || edited.LastName,
+        YearBorn: updatedYearBorn || edited.YearBorn,
+        YearDied: updatedYearDied || edited.YearDied,
+      };
+
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/author/${authorsId}`, updatedAuthor);
+
+      setData((prevData) =>
+        prevData.map((prevData) => (prevData.AuthorId === authorsId ? updatedAuthor : prevData))
+      );
+
+      alert('Author updated successfully!');
+      router.reload();
+    } catch (error) {
+      console.error('Error editing author:', error);
+      alert('Error editing author');
+    }
   };
 
-  const handleDelete = (authorsId) => {
-    // Handle delete logic here
-    console.log(`Deleting book with ID: ${authorsId}`);
+  const handleDelete = async (authorsId) => {
+    try {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/author/${authorsId}`);
+      alert('Author deleted successfully!');
+      router.reload();
+    } catch (error) {
+      alert('Error deleting author');
+    }
   };
+
+  const handleAdd = async () => {
+    try {
+      const existingIds = data.map((data) => data.AuthorID);
+      const newAuthorID = Math.max(...existingIds) + 1;
+      
+      const newAuthor = { 
+        AuthorID: newAuthorID,
+        FirstName: prompt('Enter the First Name:'),
+        LastName: prompt('Enter the Last Name:'),
+        YearBorn: prompt('Enter the Year Born:'),
+        YearDied: prompt('Enter the Year Died:'),
+      };
+      
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/author/`, newAuthor);
+
+      setData((prevData) => [...prevData, newAuthor]);
+
+      alert('Author added successfully!');
+      router.reload();
+    } catch (error) {
+      alert('Error adding author');
+    }
+  };
+
 
   return (
     <div className="bg-gray-100 min-h-screen p-8">
@@ -83,6 +153,12 @@ const AuthorPages = () => {
     <div>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mt-8"
+          onClick={handleAdd}
+        >
+          Add Author
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mt-8 ml-4"
           onClick={handleGoBack}
         >
           Back to Dashboard

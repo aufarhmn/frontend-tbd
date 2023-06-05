@@ -82,6 +82,33 @@ const BooksPage = () => {
     }
   };
   
+  const handleAddBook = async () => {
+    try {
+      const existingBookIds = books.map((book) => book.BookID);
+      const newBookId = Math.max(...existingBookIds) + 1;
+
+      const newBook = {
+        BookID: newBookId,
+        BookTitle: prompt('Enter the book title:'),
+        Description: prompt('Enter the book description:'),
+        PublicationYear: prompt('Enter the publication year:'),
+        Pages: prompt('Enter the number of pages:'),
+        PublisherID: prompt('Enter the publisher ID (Must be number):'),
+        LanguageID: prompt('Enter the language ID (Must be number):')
+      };
+
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/books/`, newBook);
+
+      setBooks((prevBooks) => [...prevBooks, newBook]);
+
+      alert('Book added successfully!');
+      router.reload();
+    } catch (error) {
+      console.error('Error adding book:', error);
+      alert('Error adding book');
+    }
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen p-8">
       <h1 className="text-2xl font-bold mb-8">Books</h1>
@@ -133,6 +160,12 @@ const BooksPage = () => {
       <div>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mt-8"
+          onClick={handleAddBook}
+        >
+          Add Book
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mt-8 ml-4"
           onClick={handleGoBack}
         >
           Back to Dashboard

@@ -26,16 +26,62 @@ const BooksPage = () => {
     router.push('/dashboard');
   };
 
-  const handleEditBook = (bookId) => {
-    // Handle edit logic here
-    console.log(`Editing book with ID: ${bookId}`);
-  };
+  const handleEditBook = async (bookId) => {
+    try {
+      const book = books.find((book) => book.BookID === bookId);
+  
+      if (!book) {
+        console.error(`Book with ID ${bookId} not found.`);
+        return;
+      }
 
-  const handleDeleteBook = (bookId) => {
-    // Handle delete logic here
-    console.log(`Deleting book with ID: ${bookId}`);
-  };
+      const updatedTitle = prompt('Enter the updated title:', book.BookTitle);
+      const updatedDescription = prompt('Enter the updated description:', book.Description);
+      const updatedPublicationYear = prompt('Enter the updated publication year:', book.PublicationYear);
+      const updatedPages = prompt('Enter the updated number of pages:', book.Pages);
+  
+      if (
+        !updatedTitle &&
+        !updatedDescription &&
+        !updatedPublicationYear &&
+        !updatedPages
+      ) {
+        console.log('No fields were updated.');
+        return;
+      }
+  
+      const updatedBook = {
+        title: updatedTitle || book.BookTitle,
+        description: updatedDescription || book.Description,
+        publicationYear: updatedPublicationYear || book.PublicationYear,
+        pages: updatedPages || book.Pages
+      };
 
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/books/${bookId}`, updatedBook);
+
+      setBooks((prevBooks) =>
+        prevBooks.map((prevBook) => (prevBook.BookID === bookId ? updatedBook : prevBook))
+      );
+
+      alert('Book updated successfully!');
+      router.reload();
+    } catch (error) {
+      console.error('Error editing book:', error);
+      alert('Error editing book');
+    }
+  };
+  
+  const handleDeleteBook = async (bookId) => {
+    try {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/books/${bookId}`);
+      alert('Book deleted successfully!');
+      router.reload();
+    } catch (error) {
+      console.error(`Error deleting book with ID ${bookId}:`, error);
+      alert('Error deleting book');
+    }
+  };
+  
   return (
     <div className="bg-gray-100 min-h-screen p-8">
       <h1 className="text-2xl font-bold mb-8">Books</h1>
@@ -44,6 +90,7 @@ const BooksPage = () => {
           <thead>
             <tr>
               <th className="font-bold text-left py-2">Book ID</th>
+              <th className="font-bold text-left py-2">Publisher ID</th>
               <th className="font-bold text-left py-2">Title</th>
               <th className="font-bold text-left py-2">Description</th>
               <th className="font-bold text-left py-2">Pages</th>
@@ -56,6 +103,7 @@ const BooksPage = () => {
             {books.map((book) => (
               <tr key={book.BookID} className="border-b border-gray-300">
                 <td className="py-2">{book.BookID}</td>
+                <td className="py-2">{book.PublisherID}</td>
                 <td className="py-2">{book.BookTitle}</td>
                 <td className="py-2">{book.Description}</td>
                 <td className="py-2">{book.Pages}</td>

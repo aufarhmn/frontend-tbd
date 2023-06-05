@@ -78,7 +78,7 @@ const BooksPage = () => {
       router.reload();
     } catch (error) {
       console.error(`Error deleting book with ID ${bookId}:`, error);
-      alert('Error deleting book');
+      alert('Error deleting book! Please check all Foreign Key constraints');
     }
   };
   

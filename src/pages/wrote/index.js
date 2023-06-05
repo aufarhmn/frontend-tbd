@@ -73,7 +73,7 @@ const WrotePages = () => {
       alert('Book deleted successfully!');
       router.reload();
     } catch (error) {
-      alert('Error deleting book');
+      alert('Error deleting wrote! Please check all Foreign Key constraints');
     }
   };
 

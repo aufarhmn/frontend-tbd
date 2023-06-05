@@ -77,7 +77,7 @@ const AuthorPages = () => {
       alert('Author deleted successfully!');
       router.reload();
     } catch (error) {
-      alert('Error deleting author');
+      alert('Error deleting author! Please check all Foreign Key constraints');
     }
   };
 

@@ -23,6 +23,7 @@ const SqlCommandRawPage = () => {
       setOutput(response.data);
     } catch (error) {
       console.error('Error executing query:', error);
+      alert('Error executing query');
     }
   };
 

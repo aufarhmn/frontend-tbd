@@ -56,6 +56,18 @@ const DashboardPage = () => {
         </div>
         <div className="flex flex-col justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
           <div className="mb-4">
+            <h2 className="text-lg text-center font-bold">City Table</h2>
+          </div>
+          <div className="text-center">
+            <Link legacyBehavior href="/table/city">
+              <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Click Here!
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+          <div className="mb-4">
             <h2 className="text-lg text-center font-bold">Customer Table</h2>
           </div>
           <div className="text-center">
@@ -72,6 +84,102 @@ const DashboardPage = () => {
           </div>
           <div className="text-center">
             <Link legacyBehavior href="/table/staff">
+              <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Click Here!
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+          <div className="mb-4">
+            <h2 className="text-lg text-center font-bold">Language Table</h2>
+          </div>
+          <div className="text-center">
+            <Link legacyBehavior href="/table/language">
+              <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Click Here!
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+          <div className="mb-4">
+            <h2 className="text-lg text-center font-bold">Purchase Table</h2>
+          </div>
+          <div className="text-center">
+            <Link legacyBehavior href="/table/purchase">
+              <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Click Here!
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+          <div className="mb-4">
+            <h2 className="text-lg text-center font-bold">Address Table</h2>
+          </div>
+          <div className="text-center">
+            <Link legacyBehavior href="/table/address">
+              <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Click Here!
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+          <div className="mb-4">
+            <h2 className="text-lg text-center font-bold">Publisher Table</h2>
+          </div>
+          <div className="text-center">
+            <Link legacyBehavior href="/table/publisher">
+              <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Click Here!
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+          <div className="mb-4">
+            <h2 className="text-lg text-center font-bold">Book Genre Table</h2>
+          </div>
+          <div className="text-center">
+            <Link legacyBehavior href="/table/bookgenre">
+              <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Click Here!
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+          <div className="mb-4">
+            <h2 className="text-lg text-center font-bold">Country Table</h2>
+          </div>
+          <div className="text-center">
+            <Link legacyBehavior href="/table/country">
+              <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Click Here!
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+          <div className="mb-4">
+            <h2 className="text-lg text-center font-bold">Genre Table</h2>
+          </div>
+          <div className="text-center">
+            <Link legacyBehavior href="/table/genre">
+              <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Click Here!
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+          <div className="mb-4">
+            <h2 className="text-lg text-center font-bold">Inventory Table</h2>
+          </div>
+          <div className="text-center">
+            <Link legacyBehavior href="/table/inventory">
               <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Click Here!
               </a>

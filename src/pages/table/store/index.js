@@ -100,59 +100,6 @@ const StorePages = () => {
     }
   };
 
-//   const handleSelectStore = (storeId) => {
-//     setSelectedStoreIds((prevSelectedStoreIds) => {
-//       if (prevSelectedStoreIds.includes(storeId)) {
-//         return prevSelectedStoreIds.filter((id) => id !== storeId);
-//       } else {
-//         return [...prevSelectedStoreIds, storeId];
-//       }
-//     });
-//   };
-
-//   const handleEditMultiple = async () => {
-//     try {
-//       if (selectedStoreIds.length === 0) {
-//         alert('Please select at least one store to edit.');
-//         return;
-//       }
-
-//       const updatedStores = selectedStoreIds.map((storeId) => {
-//         const store = data.find((store) => store.StoreID === storeId);
-//         const updatedName = prompt('Enter the updated name:', store.Name);
-//         const updatedLocation = prompt('Enter the updated location:', store.Location);
-
-//         return {
-//           id: storeId,
-//           Name: updatedName || store.Name,
-//           Location: updatedLocation || store.Location,
-//         };
-//       });
-
-//       const requestBody = {
-//         stores: updatedStores,
-//       };
-
-//       await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/Store/edit-multiple`, requestBody);
-
-//       setData((prevData) =>
-//         prevData.map((store) => {
-//           if (selectedStoreIds.includes(store.StoreID)) {
-//             const updatedStore = updatedStores.find((updatedStore) => updatedStore.id === store.StoreID);
-//             return { ...store, ...updatedStore };
-//           }
-//           return store;
-//         })
-//       );
-
-//       alert('Stores updated successfully!');
-//       router.reload();
-//     } catch (error) {
-//       console.error('Error editing stores:', error);
-//       alert('Error editing stores');
-//     }
-//   };
-
   return (
     <div className="bg-gray-100 min-h-screen p-8">
       <h1 className="text-2xl font-bold mb-8">Store</h1>
@@ -191,14 +138,6 @@ const StorePages = () => {
                   >
                     Delete
                   </button>
-                  {/* <button
-                    className={`bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ${
-                      selectedStoreIds.includes(store.StoreID) ? 'bg-green-700' : ''
-                    }`}
-                    onClick={() => handleSelectStore(store.StoreID)}
-                  >
-                    {selectedStoreIds.includes(store.StoreID) ? 'Selected' : 'Select'}
-                  </button> */}
                 </td>
               </tr>
             ))}
@@ -214,12 +153,6 @@ const StorePages = () => {
         >
           Add Store
         </button>
-        {/* <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mt-8 ml-4"
-          onClick={handleEditMultiple}
-        >
-          Edit Selected Stores
-        </button> */}
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mt-8 ml-4"
           onClick={handleGoBack}

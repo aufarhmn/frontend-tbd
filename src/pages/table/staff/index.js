@@ -105,61 +105,6 @@ const StaffPage = () => {
     }
   };
 
-//   const handleSelectStaff = (staffId) => {
-//     setSelectedStaffIds((prevSelectedStaffIds) => {
-//       if (prevSelectedStaffIds.includes(staffId)) {
-//         return prevSelectedStaffIds.filter((id) => id !== staffId);
-//       } else {
-//         return [...prevSelectedStaffIds, staffId];
-//       }
-//     });
-//   };
-
-//   const handleEditMultiple = async () => {
-//     try {
-//       if (selectedStaffIds.length === 0) {
-//         alert('Please select at least one staff to edit.');
-//         return;
-//       }
-
-//       const updatedStaff = selectedStaffIds.map((staffId) => {
-//         const staff = data.find((staff) => staff.StaffID === staffId);
-//         const updatedFirstName = prompt('Enter the updated First Name:', staff.FirstName);
-//         const updatedLastName = prompt('Enter the updated Last Name:', staff.LastName);
-
-//         return {
-//           StaffID: staffId,
-//           AddressID: staff.AddressID,
-//           StoreID: staff.StoreID,
-//           FirstName: updatedFirstName || staff.FirstName,
-//           LastName: updatedLastName || staff.LastName,
-//         };
-//       });
-
-//       const requestBody = {
-//         staff: updatedStaff,
-//       };
-
-//       await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/Staff/edit-multiple`, requestBody);
-
-//       setData((prevData) =>
-//         prevData.map((staff) => {
-//           if (selectedStaffIds.includes(staff.StaffID)) {
-//             const updatedStaff = updatedStaff.find((updatedStaff) => updatedStaff.StaffID === staff.StaffID);
-//             return { ...staff, ...updatedStaff };
-//           }
-//           return staff;
-//         })
-//       );
-
-//       alert('Staff updated successfully!');
-//       router.reload();
-//     } catch (error) {
-//       console.error('Error editing staff:', error);
-//       alert('Error editing staff');
-//     }
-//   };
-
   return (
     <div className="bg-gray-100 min-h-screen p-8">
       <h1 className="text-2xl font-bold mb-8">Staff</h1>
@@ -196,14 +141,6 @@ const StaffPage = () => {
                   >
                     Delete
                   </button>
-                  {/* <button
-                    className={`bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ${
-                      selectedStaffIds.includes(staff.StaffID) ? 'bg-green-700' : ''
-                    }`}
-                    onClick={() => handleSelectStaff(staff.StaffID)}
-                  >
-                    {selectedStaffIds.includes(staff.StaffID) ? 'Selected' : 'Select'}
-                  </button> */}
                 </td>
               </tr>
             ))}
@@ -219,12 +156,6 @@ const StaffPage = () => {
         >
           Add Staff
         </button>
-        {/* <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
-          onClick={handleEditMultiple}
-        >
-          Edit Selected
-        </button> */}
         <button
           className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
           onClick={handleGoBack}

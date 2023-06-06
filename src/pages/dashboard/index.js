@@ -11,7 +11,7 @@ const DashboardPage = () => {
             <h2 className="text-lg text-center font-bold">Books Table</h2>
           </div>
           <div className="text-center">
-            <Link legacyBehavior href="/books">
+            <Link legacyBehavior href="/table/books">
               <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Click Here!
               </a>
@@ -23,7 +23,7 @@ const DashboardPage = () => {
             <h2 className="text-lg text-center font-bold">Wrote Table</h2>
           </div>
           <div className="text-center">
-            <Link legacyBehavior href="/wrote">
+            <Link legacyBehavior href="/table/wrote">
               <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Click Here!
               </a>
@@ -35,7 +35,7 @@ const DashboardPage = () => {
             <h2 className="text-lg text-center font-bold">Author Table</h2>
           </div>
           <div className="text-center">
-            <Link legacyBehavior href="/authors">
+            <Link legacyBehavior href="/table/authors">
               <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Click Here!
               </a>

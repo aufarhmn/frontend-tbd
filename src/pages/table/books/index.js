@@ -9,7 +9,7 @@ const BooksPage = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/Book/`);
         const sortedBooks = response.data.sort((a, b) => a.BookID - b.BookID);
         setBooks(sortedBooks);
         console.log(sortedBooks);
@@ -57,7 +57,7 @@ const BooksPage = () => {
         pages: updatedPages || book.Pages
       };
 
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/books/${bookId}`, updatedBook);
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/Book/${bookId}`, updatedBook);
 
       setBooks((prevBooks) =>
         prevBooks.map((prevBook) => (prevBook.BookID === bookId ? updatedBook : prevBook))
@@ -73,7 +73,7 @@ const BooksPage = () => {
   
   const handleDeleteBook = async (bookId) => {
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/books/${bookId}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/Book/${bookId}`);
       alert('Book deleted successfully!');
       router.reload();
     } catch (error) {
@@ -97,7 +97,7 @@ const BooksPage = () => {
         LanguageID: prompt('Enter the language ID (Must be number):')
       };
 
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/books/`, newBook);
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/Book/`, newBook);
 
       setBooks((prevBooks) => [...prevBooks, newBook]);
 

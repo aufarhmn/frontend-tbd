@@ -9,7 +9,7 @@ const WrotePages = () => {
   useEffect(() => {
     const fetchInfo = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/wrote/`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/Wrote/`);
         const sortedWrote = response.data.sort((a, b) => a.BookID - b.BookID);
         setWrotes(sortedWrote);
         console.log(sortedWrote);
@@ -53,7 +53,7 @@ const WrotePages = () => {
         bookid: updatedBookID || wrote.BookID,
       };
 
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/wrote/`, updatedWrote);
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/Wrote/`, updatedWrote);
 
       setWrotes((prevWrotes) =>
         prevWrotes.map((prevWrote) => (prevWrote.BookID === bookId ? updatedWrote : prevWrote))
@@ -69,7 +69,7 @@ const WrotePages = () => {
 
   const handleDelete = async (bookId, authorId) => {
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/wrote/${bookId}/${authorId}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/Wrote/${bookId}/${authorId}`);
       alert('Book deleted successfully!');
       router.reload();
     } catch (error) {
@@ -85,7 +85,7 @@ const WrotePages = () => {
         authorid: prompt('Enter the AuthorID (Must be a number):')
       };
 
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/wrote/`, newWrote);
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/Wrote/`, newWrote);
 
       setWrotes((prevWrote) => [...prevWrote, newWrote]);
 

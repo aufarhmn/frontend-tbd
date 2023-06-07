@@ -71,6 +71,32 @@ const PurchasePage = () => {
     }
   };
 
+  const handleAdd = async () => {
+    try {
+      const existingIds = data.map((purchase) => purchase.PurchaseID);
+      const newPurchaseID = Math.max(...existingIds) + 1;
+
+      const newPurchase = {
+        PurchaseID: newPurchaseID,
+        CustomerID: prompt('Enter the Customer ID:'),
+        StaffID: prompt('Enter the Staff ID:'),
+        StoreID: prompt('Enter the Store ID:'),
+        InventoryID: prompt('Enter the Inventory ID:'),
+        Amount: prompt('Enter the Amount:'),
+        PurchaseDate: prompt('Enter the Purchase Date:'),
+      };
+
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/Purchase/`, newPurchase);
+
+      setData((prevData) => [...prevData, newPurchase]);
+
+      alert('Purchase added successfully!');
+      router.reload();
+    } catch (error) {
+      alert('Error adding purchase');
+    }
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen p-8">
       <h1 className="text-2xl font-bold mb-8">Purchase</h1>
@@ -116,6 +142,12 @@ const PurchasePage = () => {
         <p>No purchases available</p>
       )}
       <div>
+      <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mt-8 ml-4"
+          onClick={handleAdd}
+        >
+          Add Purchase
+        </button>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mt-8 ml-4"
           onClick={handleGoBack}

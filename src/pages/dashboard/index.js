@@ -4,7 +4,7 @@ import Link from 'next/link';
 const DashboardPage = () => {
   return (
     <div className="bg-gray-100 min-h-screen p-8">
-      <h1 className="text-2xl font-bold mb-8">PostgreSQL Interface</h1>
+      <h1 className="text-2xl font-bold mb-8">Good Reading Bookstore Interface</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div className="flex flex-col justify-between bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
           <div className="mb-4">

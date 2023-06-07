@@ -12,3 +12,6 @@ This project is a part of the course Database Technology at the Gadjah Mada Univ
 ## Accessing the Web Application
 - Frontend: https://tbd-aufa.vercel.app/
 - Backend: https://backend-tbd-sepia.vercel.app/
+
+## Note
+<i><b> Configuration file or .env file is deleted and cant be accessed for public. For Database Technology grader, please open the RAR file attached at eLOK and extract it. The RAR file contains the .env file. </i></b>

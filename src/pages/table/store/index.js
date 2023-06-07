@@ -5,7 +5,6 @@ import axios from 'axios';
 const StorePages = () => {
   const router = useRouter();
   const [data, setData] = useState([]);
-  const [selectedStoreIds, setSelectedStoreIds] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {

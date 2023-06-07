@@ -5,7 +5,6 @@ import axios from 'axios';
 const InventoryPage = () => {
   const router = useRouter();
   const [data, setData] = useState([]);
-  const [selectedInventoryIds, setSelectedInventoryIds] = useState([]);
 
   useEffect(() => {
     const fetchInventory = async () => {

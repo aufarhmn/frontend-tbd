@@ -5,7 +5,6 @@ import axios from 'axios';
 const StaffPage = () => {
   const router = useRouter();
   const [data, setData] = useState([]);
-  const [selectedStaffIds, setSelectedStaffIds] = useState([]);
 
   useEffect(() => {
     const fetchStaff = async () => {

@@ -5,7 +5,6 @@ import axios from 'axios';
 const CustomerPages = () => {
   const router = useRouter();
   const [data, setData] = useState([]);
-  const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
 
   useEffect(() => {
     const fetchInfo = async () => {
@@ -100,61 +99,6 @@ const CustomerPages = () => {
     }
   };
 
-//   const handleSelectCustomer = (customerId) => {
-//     setSelectedCustomerIds((prevSelectedCustomerIds) => {
-//       if (prevSelectedCustomerIds.includes(customerId)) {
-//         return prevSelectedCustomerIds.filter((id) => id !== customerId);
-//       } else {
-//         return [...prevSelectedCustomerIds, customerId];
-//       }
-//     });
-//   };
-
-//   const handleEditMultiple = async () => {
-//     try {
-//       if (selectedCustomerIds.length === 0) {
-//         alert('Please select at least one customer to edit.');
-//         return;
-//       }
-
-//       const updatedCustomers = selectedCustomerIds.map((customerId) => {
-//         const customer = data.find((customer) => customer.CustomerID === customerId);
-//         const updatedFirstName = prompt('Enter the updated First Name:', customer.FirstName);
-//         const updatedLastName = prompt('Enter the updated Last Name:', customer.LastName);
-
-//         return {
-//           id: customerId,
-//           StoreID: customer.StoreID,
-//           AddressID: customer.AddressID,
-//           FirstName: updatedFirstName || customer.FirstName,
-//           LastName: updatedLastName || customer.LastName,
-//         };
-//       });
-
-//       const requestBody = {
-//         customers: updatedCustomers,
-//       };
-
-//       await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/Customer/edit-multiple`, requestBody);
-
-//       setData((prevData) =>
-//         prevData.map((customer) => {
-//           if (selectedCustomerIds.includes(customer.CustomerID)) {
-//             const updatedCustomer = updatedCustomers.find((updatedCustomer) => updatedCustomer.id === customer.CustomerID);
-//             return { ...customer, ...updatedCustomer };
-//           }
-//           return customer;
-//         })
-//       );
-
-//       alert('Customers updated successfully!');
-//       router.reload();
-//     } catch (error) {
-//       console.error('Error editing customers:', error);
-//       alert('Error editing customers');
-//     }
-//   };
-
   return (
     <div className="bg-gray-100 min-h-screen p-8">
       <h1 className="text-2xl font-bold mb-8">Customer</h1>
@@ -195,14 +139,6 @@ const CustomerPages = () => {
                   >
                     Delete
                   </button>
-                  {/* <button
-                    className={`bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ${
-                      selectedCustomerIds.includes(customer.CustomerID) ? 'bg-green-700' : ''
-                    }`}
-                    onClick={() => handleSelectCustomer(customer.CustomerID)}
-                  >
-                    {selectedCustomerIds.includes(customer.CustomerID) ? 'Selected' : 'Select'}
-                  </button> */}
                 </td>
               </tr>
             ))}
@@ -218,15 +154,6 @@ const CustomerPages = () => {
         >
           Add Customer
         </button>
-        {/* <button
-          className={`bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${
-            selectedCustomerIds.length > 0 ? '' : 'opacity-50 cursor-not-allowed'
-          }`}
-          onClick={handleEditMultiple}
-          disabled={selectedCustomerIds.length === 0}
-        >
-          Edit Selected
-        </button> */}
         <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleGoBack}>
         Back to Dashboard
       </button>

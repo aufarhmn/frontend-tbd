@@ -12,7 +12,6 @@ const AddressPage = () => {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/Address/`);
         const sortedData = response.data.sort((a, b) => a.AddressID - b.AddressID);
         setData(sortedData);
-        console.log(sortedData);
       } catch (error) {
         console.error('Error fetching addresses:', error);
         alert('Error fetching addresses');
@@ -46,7 +45,7 @@ const AddressPage = () => {
         !updatedState &&
         !updatedPhoneNumber
       ) {
-        console.log('No fields were updated.');
+        alert('No fields were updated.');
         return;
       }
 

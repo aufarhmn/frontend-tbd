@@ -5,7 +5,6 @@ import axios from 'axios';
 const BookGenrePage = () => {
   const router = useRouter();
   const [data, setData] = useState([]);
-  const [selectedBookGenreIds, setSelectedBookGenreIds] = useState([]);
 
   useEffect(() => {
     const fetchBookGenres = async () => {

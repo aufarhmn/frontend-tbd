@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 const HomePage = () => {
@@ -43,9 +44,9 @@ const HomePage = () => {
           </form>
         ) : (
           <div className="flex justify-center">
-            <a href="/dashboard" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded items-center">
+            <Link href="/dashboard" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded items-center">
               Continue to Dashboard
-            </a>
+            </Link>
           </div>
         )}
       </div>
